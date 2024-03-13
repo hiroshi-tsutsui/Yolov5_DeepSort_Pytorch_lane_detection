@@ -156,7 +156,7 @@ def find_lane_pixels_using_histogram(binary_warped):
     
     # Find the peak of the left and right halves of the histogram
     # These will be the starting point for the left and right lines
-    midpoint = np.int(histogram.shape[0]//2)
+    midpoint = np.int64(histogram.shape[0]//2)
     leftx_base = np.argmax(histogram[:midpoint])
     rightx_base = np.argmax(histogram[midpoint:]) + midpoint
 
@@ -168,7 +168,7 @@ def find_lane_pixels_using_histogram(binary_warped):
     minpix =  int(1280*(50/1920))
 
     # Set height of windows - based on nwindows above and image shape
-    window_height = np.int(binary_warped.shape[0]//nwindows)
+    window_height = np.int64(binary_warped.shape[0]//nwindows)
     # Identify the x and y positions of all nonzero pixels in the image
     nonzero = binary_warped.nonzero()
     nonzeroy = np.array(nonzero[0])
@@ -203,9 +203,9 @@ def find_lane_pixels_using_histogram(binary_warped):
         
         # If you found > minpix pixels, recenter next window on their mean position
         if len(good_left_inds) > minpix:
-            leftx_current = np.int(np.mean(nonzerox[good_left_inds]))
+            leftx_current = np.int64(np.mean(nonzerox[good_left_inds]))
         if len(good_right_inds) > minpix:        
-            rightx_current = np.int(np.mean(nonzerox[good_right_inds]))
+            rightx_current = np.int64(np.mean(nonzerox[good_right_inds]))
         
         # ## if scan windows added  
         # cv2.rectangle(window_img,(win_xleft_high,win_y_high),(win_xleft_low,win_y_low),(255,255,255),3)

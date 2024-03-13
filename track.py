@@ -262,40 +262,34 @@ def detect(opt):
 
             else:
                 deepsort.increment_ages()
-<<<<<<< HEAD
 
             # Print time (inference-only)
             #LOGGER.info(f'{s}Done. YOLO:({t3 - t2:.3f}s), DeepSort:({t5 - t4:.3f}s)')
-=======
                 LOGGER.info('No detections')
->>>>>>> fe7b4e230b3c4518b064b31d3d0e3246c5f34c25
 
             # Stream results
             im0 = annotator.result()
             if show_vid:
-<<<<<<< HEAD
                 #cv2.imshow(p, im0)
                 cv2.imshow("result", im0)
-=======
                 cv2.imshow(str(p), im0)
->>>>>>> fe7b4e230b3c4518b064b31d3d0e3246c5f34c25
                 if cv2.waitKey(1) == ord('q'):  # q to quit
                     raise StopIteration
 
             # Save results (image with detections)
-            # if save_vid:
-            #     if vid_path != save_path:  # new video
-            #         vid_path = save_path
-            #         if isinstance(vid_writer, cv2.VideoWriter):
-            #             vid_writer.release()  # release previous video writer
-            #         if vid_cap:  # video
-            #             fps = vid_cap.get(cv2.CAP_PROP_FPS)
-            #             w = int(vid_cap.get(cv2.CAP_PROP_FRAME_WIDTH))
-            #             h = int(vid_cap.get(cv2.CAP_PROP_FRAME_HEIGHT))
-            #         else:  # stream
-            #             fps, w, h = 30, im0.shape[1], im0.shape[0]
+            if save_vid:
+                if vid_path != save_path:  # new video
+                    vid_path = save_path
+                    if isinstance(vid_writer, cv2.VideoWriter):
+                        vid_writer.release()  # release previous video writer
+                    if vid_cap:  # video
+                        fps = vid_cap.get(cv2.CAP_PROP_FPS)
+                        w = int(vid_cap.get(cv2.CAP_PROP_FRAME_WIDTH))
+                        h = int(vid_cap.get(cv2.CAP_PROP_FRAME_HEIGHT))
+                    else:  # stream
+                        fps, w, h = 30, im0.shape[1], im0.shape[0]
 
-            #         #vid_writer = cv2.VideoWriter(save_path, cv2.VideoWriter_fourcc(*'mp4v'), fps, (w, h))
+                    vid_writer = cv2.VideoWriter(save_path, cv2.VideoWriter_fourcc(*'mp4v'), fps, (w, h))
 
             #     vid_writer.write(im0)
 
